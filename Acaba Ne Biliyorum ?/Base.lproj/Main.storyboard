@@ -27,6 +27,9 @@
                                     <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="answerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j7q-3n-QC7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BsQ-fQ-kpA">
                                 <rect key="frame" x="10" y="710" width="373" height="60"/>
@@ -39,6 +42,9 @@
                                     <fontDescription key="titleFontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="answerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ewu-br-fP9"/>
+                                </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GAf-iq-cIf">
                                 <rect key="frame" x="10" y="790" width="373" height="8"/>
@@ -73,6 +79,12 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GAf-iq-cIf" secondAttribute="bottom" constant="20" id="wjV-eF-XXF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="falseButtonOut" destination="BsQ-fQ-kpA" id="dnQ-eb-Uoj"/>
+                        <outlet property="progressViewOut" destination="GAf-iq-cIf" id="4aK-6C-63Q"/>
+                        <outlet property="questionLabel" destination="xpb-O3-NEy" id="gGB-In-T94"/>
+                        <outlet property="trueButtonOut" destination="WC1-ZU-tbw" id="BcA-Zm-1aN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
