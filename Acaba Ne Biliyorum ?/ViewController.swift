@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         updateUI(button: UIButton())
         falseButtonOut.layer.cornerRadius = 8
         trueButtonOut.layer.cornerRadius = 8
+        progressViewOut.progress = 0.0
     }
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -55,6 +56,7 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
             button.backgroundColor = .systemGray
             self.questionLabel.text = quiz[questionNumber].q
+            progressViewOut.progress = Float(questionNumber) / Float(quiz.count)
         }
     }
     
