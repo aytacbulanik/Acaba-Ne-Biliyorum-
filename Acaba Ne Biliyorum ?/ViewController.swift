@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     var questionNumber = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
+        updateUI(button: UIButton())
         falseButtonOut.layer.cornerRadius = 8
         trueButtonOut.layer.cornerRadius = 8
     }
@@ -38,20 +38,24 @@ class ViewController: UIViewController {
         guard let answer = sender.titleLabel?.text else {return}
         let trueAnswer = quiz[questionNumber].a
         if answer == trueAnswer {
-            print("the answer is true")
+            sender.backgroundColor = .green
         } else {
-            print("the answer is wrong !")
+            sender.backgroundColor = .red
         }
         if questionNumber + 1 < quiz.count {
             questionNumber += 1
         } else {
             questionNumber = 0
         }
-        updateUI()
+        updateUI(button: sender)
     }
     
-    func updateUI() {
-        questionLabel.text = quiz[questionNumber].q
+    func updateUI(button : UIButton) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
+            button.backgroundColor = .systemGray
+            self.questionLabel.text = quiz[questionNumber].q
+        }
     }
     
 }
