@@ -23,7 +23,6 @@ class ViewController: UIViewController {
         choseeOneButtonOut.layer.cornerRadius = 8
         choseeThreeButtonOut.layer.cornerRadius = 8
         choseeTwoButtonOut.layer.cornerRadius = 8
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,6 +35,7 @@ class ViewController: UIViewController {
         choseeOneButtonOut.setTitle(answerC[0], for: .normal)
         choseeTwoButtonOut.setTitle(answerC[1], for: .normal)
         choseeThreeButtonOut.setTitle(answerC[2], for: .normal)
+        print(progressViewOut.progress)
     }
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -46,11 +46,11 @@ class ViewController: UIViewController {
         } else {
             sender.backgroundColor = .red
         }
-
-        updateUI()
+        updateUI(button: sender)
     }
     
-    func updateUI() {
+    func updateUI(button : UIButton) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [self] in
             questionLabel.text = questionManager.sendNewQuestion()
             scoreLabel.text = "Score : \(questionManager.getScore())"
             progressViewOut.progress = questionManager.progressManager()
@@ -59,6 +59,8 @@ class ViewController: UIViewController {
             choseeOneButtonOut.setTitle(chosees[0], for: .normal)
             choseeTwoButtonOut.setTitle(chosees[1], for: .normal)
             choseeThreeButtonOut.setTitle(chosees[2], for: .normal)
+            button.backgroundColor = .systemGray
+        }
     }
     
 }
