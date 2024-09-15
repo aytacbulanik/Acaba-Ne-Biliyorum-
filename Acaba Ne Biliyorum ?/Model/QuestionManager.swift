@@ -1,18 +1,14 @@
 //
-//  ViewController.swift
+//  QuestionManager.swift
 //  Acaba Ne Biliyorum ?
 //
-//  Created by Aytaç Bulanık on 14.09.2024.
+//  Created by Aytaç Bulanık on 15.09.2024.
 //
 
-import UIKit
+import Foundation
 
-class ViewController: UIViewController {
-
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var trueButtonOut: UIButton!
-    @IBOutlet weak var falseButtonOut: UIButton!
-    @IBOutlet weak var progressViewOut: UIProgressView!
+struct QuestionManager {
+    
     let quiz = [Question(q: "A slug's blood is green.", a: "True"),
                 Question(q: "Approximately one quarter of human bones are in the feet.", a: "True"),
                 Question(q: "The total surface area of two human lungs is approximately 70 square metres.", a: "True"),
@@ -27,38 +23,12 @@ class ViewController: UIViewController {
                 Question(q: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", a: "True")
     ]
     var questionNumber = 0
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateUI(button: UIButton())
-        falseButtonOut.layer.cornerRadius = 8
-        trueButtonOut.layer.cornerRadius = 8
-        progressViewOut.progress = 0.0
-    }
-
-    @IBAction func answerButtonPressed(_ sender: UIButton) {
-        guard let answer = sender.titleLabel?.text else {return}
-        let trueAnswer = quiz[questionNumber].a
-        if answer == trueAnswer {
-            sender.backgroundColor = .green
-        } else {
-            sender.backgroundColor = .red
-        }
-        if questionNumber + 1 < quiz.count {
-            questionNumber += 1
-        } else {
-            questionNumber = 0
-        }
-        updateUI(button: sender)
-    }
     
-    func updateUI(button : UIButton) {
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
-            button.backgroundColor = .systemGray
-            self.questionLabel.text = quiz[questionNumber].q
-            progressViewOut.progress = Float(questionNumber) / Float(quiz.count)
+    func checkAnswer(_ answer : String) -> Bool {
+        if answer == quiz[questionNumber].a {
+            return true
+        } else {
+            return false
         }
     }
-    
 }
-
