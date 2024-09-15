@@ -32,11 +32,12 @@ class ViewController: UIViewController {
         } else {
             sender.backgroundColor = .red
         }
-        if questionNumber + 1 < quiz.count {
+     /*   if questionNumber + 1 < quiz.count {
             questionNumber += 1
         } else {
             questionNumber = 0
         }
+      */
         updateUI(button: sender)
     }
     
@@ -44,8 +45,8 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
             button.backgroundColor = .systemGray
-            self.questionLabel.text = quiz[questionNumber].q
-            progressViewOut.progress = Float(questionNumber) / Float(quiz.count)
+            self.questionLabel.text = questionManager.sendNewQuestion()
+            progressViewOut.progress = questionManager.progressManager()
         }
     }
     

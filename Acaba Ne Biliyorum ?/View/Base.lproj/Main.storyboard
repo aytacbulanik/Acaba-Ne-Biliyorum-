@@ -52,7 +52,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="8" id="kct-7g-7xX"/>
                                 </constraints>
-                                <color key="progressTintColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="progressTintColor" systemColor="systemGrayColor"/>
                                 <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acaba ? İki ile Beşi Toplarsak Yedi mi olur" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpb-O3-NEy">
@@ -93,9 +93,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="scrollViewTexturedBackgroundColor">
-            <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -31,4 +31,13 @@ struct QuestionManager {
             return false
         }
     }
+    
+    func sendNewQuestion() -> String {
+        return quiz[questionNumber].q
+    }
+    
+    func progressManager() -> Float {
+        let progress = Float(questionNumber + 1) / Float(quiz.count)
+        return progress
+    }
 }
