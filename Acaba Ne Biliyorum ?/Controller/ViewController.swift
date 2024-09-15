@@ -20,11 +20,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionLabel.text = questionManager.senFirstQuestion()
         choseeOneButtonOut.layer.cornerRadius = 8
         choseeThreeButtonOut.layer.cornerRadius = 8
         choseeTwoButtonOut.layer.cornerRadius = 8
-        progressViewOut.progress = 0.0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateUI()
     }
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -36,17 +39,19 @@ class ViewController: UIViewController {
             sender.backgroundColor = .red
         }
 
-        updateUI(button: sender)
+        updateUI()
     }
     
-    func updateUI(button : UIButton) {
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
-            button.backgroundColor = .systemGray
-            self.questionLabel.text = questionManager.sendNewQuestion()
+    func updateUI() {
+            questionLabel.text = questionManager.sendNewQuestion()
             scoreLabel.text = "Score : \(questionManager.getScore())"
             progressViewOut.progress = questionManager.progressManager()
-        }
+            var chosees = questionManager.sendChosees()
+            chosees = chosees.shuffled()
+            choseeOneButtonOut.titleLabel?.text = chosees[0]
+            choseeTwoButtonOut.titleLabel?.text = chosees[1]
+            choseeThreeButtonOut.titleLabel?.text = chosees[2]
+        print(chosees)
     }
     
 }
