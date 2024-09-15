@@ -16,22 +16,30 @@ class ViewController: UIViewController {
     @IBOutlet weak var progressViewOut: UIProgressView!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var questionManager = QuestionManager()
+    var questionManager = QuestionManager(questionNumber: 0, score: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         choseeOneButtonOut.layer.cornerRadius = 8
         choseeThreeButtonOut.layer.cornerRadius = 8
         choseeTwoButtonOut.layer.cornerRadius = 8
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        updateUI()
+        let chosee = questionManager.sendFirstQuestion()
+        let answer = chosee.0
+        questionLabel.text = answer
+        var answerC = chosee.1
+        answerC = answerC.shuffled()
+        choseeOneButtonOut.setTitle(answerC[0], for: .normal)
+        choseeTwoButtonOut.setTitle(answerC[1], for: .normal)
+        choseeThreeButtonOut.setTitle(answerC[2], for: .normal)
     }
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
-        guard let answer = sender.titleLabel?.text else {return}
+        guard let answer = sender.currentTitle else {return}
         let controlAnswer = questionManager.checkAnswer(answer)
         if controlAnswer {
             sender.backgroundColor = .green
@@ -48,10 +56,9 @@ class ViewController: UIViewController {
             progressViewOut.progress = questionManager.progressManager()
             var chosees = questionManager.sendChosees()
             chosees = chosees.shuffled()
-            choseeOneButtonOut.titleLabel?.text = chosees[0]
-            choseeTwoButtonOut.titleLabel?.text = chosees[1]
-            choseeThreeButtonOut.titleLabel?.text = chosees[2]
-        print(chosees)
+            choseeOneButtonOut.setTitle(chosees[0], for: .normal)
+            choseeTwoButtonOut.setTitle(chosees[1], for: .normal)
+            choseeThreeButtonOut.setTitle(chosees[2], for: .normal)
     }
     
 }

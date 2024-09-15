@@ -22,6 +22,12 @@ struct QuestionManager {
     ]
     var questionNumber = 0
     var score = 0
+    
+    init(questionNumber: Int , score: Int ) {
+        self.questionNumber = 0
+        self.score = 0
+    }
+    
     mutating func checkAnswer(_ answer : String) -> Bool {
         if answer == quiz[questionNumber].correctAnswer {
             score += 1
@@ -29,6 +35,9 @@ struct QuestionManager {
         } else {
             return false
         }
+    }
+    func sendFirstQuestion() -> (String , [String]) {
+        return (quiz[questionNumber].q , quiz[questionNumber].a)
     }
     
     mutating func sendNewQuestion() -> String {
@@ -46,7 +55,7 @@ struct QuestionManager {
     }
     
     func progressManager() -> Float {
-        let progress = Float(questionNumber + 1) / Float(quiz.count)
+        let progress = Float(questionNumber) / Float(quiz.count)
         return progress
     }
     
