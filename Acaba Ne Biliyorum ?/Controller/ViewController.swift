@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var trueButtonOut: UIButton!
     @IBOutlet weak var falseButtonOut: UIButton!
     @IBOutlet weak var progressViewOut: UIProgressView!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var questionManager = QuestionManager()
     
@@ -41,6 +42,7 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [self] in
             button.backgroundColor = .systemGray
             self.questionLabel.text = questionManager.sendNewQuestion()
+            scoreLabel.text = "Score : \(questionManager.getScore())"
             progressViewOut.progress = questionManager.progressManager()
         }
     }

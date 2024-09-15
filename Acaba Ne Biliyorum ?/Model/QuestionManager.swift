@@ -23,9 +23,10 @@ struct QuestionManager {
                 Question(q: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", a: "True")
     ]
     var questionNumber = 0
-    
-    func checkAnswer(_ answer : String) -> Bool {
+    var score = 0
+    mutating func checkAnswer(_ answer : String) -> Bool {
         if answer == quiz[questionNumber].a {
+            score += 1
             return true
         } else {
             return false
@@ -39,8 +40,13 @@ struct QuestionManager {
                 questionNumber += 1
             } else {
                 questionNumber = 0
+                score = 0
             }
             return quiz[questionNumber].q
+    }
+    
+    func getScore() -> Int {
+        return score
     }
     
     func progressManager() -> Float {
