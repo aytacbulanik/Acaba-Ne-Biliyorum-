@@ -10,8 +10,9 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var trueButtonOut: UIButton!
-    @IBOutlet weak var falseButtonOut: UIButton!
+    @IBOutlet weak var choseeOneButtonOut: UIButton!
+    @IBOutlet weak var choseeTwoButtonOut: UIButton!
+    @IBOutlet weak var choseeThreeButtonOut: UIButton!
     @IBOutlet weak var progressViewOut: UIProgressView!
     @IBOutlet weak var scoreLabel: UILabel!
     
@@ -20,8 +21,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         questionLabel.text = questionManager.senFirstQuestion()
-        falseButtonOut.layer.cornerRadius = 8
-        trueButtonOut.layer.cornerRadius = 8
+        choseeOneButtonOut.layer.cornerRadius = 8
+        choseeThreeButtonOut.layer.cornerRadius = 8
+        choseeTwoButtonOut.layer.cornerRadius = 8
         progressViewOut.progress = 0.0
     }
 
@@ -33,7 +35,7 @@ class ViewController: UIViewController {
         } else {
             sender.backgroundColor = .red
         }
-     
+
         updateUI(button: sender)
     }
     
