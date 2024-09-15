@@ -31,13 +31,20 @@ struct QuestionManager {
             return false
         }
     }
-    
-    func sendNewQuestion() -> String {
-        return quiz[questionNumber].q
+    func senFirstQuestion() -> String {
+        return quiz[0].q
+    }
+    mutating func sendNewQuestion() -> String {
+            if questionNumber + 1 < quiz.count {
+                questionNumber += 1
+            } else {
+                questionNumber = 0
+            }
+            return quiz[questionNumber].q
     }
     
     func progressManager() -> Float {
-        let progress = Float(questionNumber + 1) / Float(quiz.count)
+        let progress = Float(questionNumber) / Float(quiz.count)
         return progress
     }
 }

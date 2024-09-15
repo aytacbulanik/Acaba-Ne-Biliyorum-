@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI(button: UIButton())
+        questionLabel.text = questionManager.senFirstQuestion()
         falseButtonOut.layer.cornerRadius = 8
         trueButtonOut.layer.cornerRadius = 8
         progressViewOut.progress = 0.0
@@ -32,12 +32,7 @@ class ViewController: UIViewController {
         } else {
             sender.backgroundColor = .red
         }
-     /*   if questionNumber + 1 < quiz.count {
-            questionNumber += 1
-        } else {
-            questionNumber = 0
-        }
-      */
+     
         updateUI(button: sender)
     }
     
